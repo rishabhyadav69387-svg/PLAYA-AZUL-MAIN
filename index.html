@@ -1410,9 +1410,30 @@
       max-width: 1100px;
       margin: 0 auto;
       padding: 0 var(--g);
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
       gap: 1.8rem;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+      padding-bottom: 1rem;
+    }
+
+    .test-grid::-webkit-scrollbar {
+      height: 8px;
+    }
+
+    .test-grid::-webkit-scrollbar-track {
+      background: rgba(98, 132, 135, 0.1);
+      border-radius: 10px;
+    }
+
+    .test-grid::-webkit-scrollbar-thumb {
+      background: var(--sage);
+      border-radius: 10px;
+    }
+
+    .test-grid::-webkit-scrollbar-thumb:hover {
+      background: var(--teal);
     }
 
     .test-card {
@@ -1423,6 +1444,9 @@
       box-shadow: var(--shadow-sm);
       border: 1px solid rgba(255, 255, 255, 0.6);
       transition: transform 0.3s var(--ease), box-shadow 0.3s;
+      flex: 0 0 calc(50% - 0.9rem);
+      scroll-snap-align: start;
+      min-height: 320px;
     }
 
     .test-card:hover {
@@ -1493,9 +1517,13 @@
 
     @media (max-width: 1080px) {
       .test-grid {
-        grid-template-columns: 1fr;
-        max-width: 520px;
+        max-width: 100%;
         margin: 0 auto;
+        padding: 0 var(--g) 1rem;
+      }
+
+      .test-card {
+        flex: 0 0 calc(100% - 1rem);
       }
     }
 
